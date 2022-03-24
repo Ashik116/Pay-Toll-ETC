@@ -53,7 +53,7 @@ class _SlideDrawerState extends State<SlideDrawer> {
               onTap: () {
                 //Navigator.of(context).pushNamed("/profile/user");
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => Test()));
+                    context, MaterialPageRoute(builder: (_) => const Test()));
               },
             ),
             ListTile(
@@ -62,7 +62,7 @@ class _SlideDrawerState extends State<SlideDrawer> {
               onTap: () {
                 //Navigator.of(context).pushNamed("/profile/user");
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => HomePage()));
+                    context, MaterialPageRoute(builder: (_) => const HomePage()));
               },
             ),
             ListTile(
@@ -70,7 +70,7 @@ class _SlideDrawerState extends State<SlideDrawer> {
               title: const Text('LogOut'),
               onTap: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => Test()));
+                    context, MaterialPageRoute(builder: (_) => const Test()));
               },
             ),
             const Divider(

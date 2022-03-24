@@ -19,20 +19,20 @@ class _RechargePageState extends State<RechargePage> {
           onPressed: (){
             Get.back();
           },
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
         ),
         backgroundColor: Colors.deepPurple,
-        title: Text('Reacharge'),
+        title: const Text('Reacharge'),
         actions: [
-          IconButton(onPressed: (){}, icon:Icon(Icons.search), ),
+          IconButton(onPressed: (){}, icon:const Icon(Icons.search), ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (_)=>ProfileRecharge()));
+          Navigator.push(context, MaterialPageRoute(builder: (_)=>const ProfileRecharge()));
         },
         backgroundColor: Colors.deepPurple,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
 
 
       ),

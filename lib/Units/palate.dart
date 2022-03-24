@@ -17,29 +17,29 @@ class _PalateState extends State<Palate> {
           SizedBox(
             height: size.height*0.1,
           ),
-          TextField(
+          const TextField(
             decoration: InputDecoration(
               labelText: "Name"
             ),
           ),
-          TextField(
+          const TextField(
             decoration: InputDecoration(
               labelText: "State"
             ),
           ),
-          TextField(
+          const TextField(
             decoration: InputDecoration(
               labelText: "Category"
             ),
           ),
           Row(
             children: [
-              Container(child:TextField(),
+              Container(child:const TextField(),
               width: 100,
                 color: Colors.red,
 
               ),
-              Container(child:TextField(),
+              Container(child:const TextField(),
                 color: Colors.red,
                 width: 10,
               ),
