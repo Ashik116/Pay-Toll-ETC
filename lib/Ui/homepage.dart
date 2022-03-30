@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:toll_payetc/Animation/loading.dart';
 import 'package:toll_payetc/Model/drawer.dart';
 import 'package:toll_payetc/Ui/sign_in.dart';
+import 'package:toll_payetc/Units/Contact%20Us/contact_us.dart';
+import 'package:toll_payetc/Units/Feedback/feedback.dart';
+import 'package:toll_payetc/Units/Tag%20Activition/tag_activition.dart';
+import 'package:toll_payetc/Units/location.dart';
 import 'package:toll_payetc/Units/recharge.dart';
 
 import '../Constants/constants.dart';
@@ -37,6 +41,7 @@ class _HomePageState extends State<HomePage> {
     return !isSplashing
         ? const loadingAnimation()
         : Scaffold(
+            resizeToAvoidBottomInset: false,
             drawer: const SlideDrawer(),
             backgroundColor: Colors.white,
             //floatingActionButton: Container(child: Text("Pay Your Toll in Smart Way"),),
@@ -54,13 +59,14 @@ class _HomePageState extends State<HomePage> {
                     icon: const Icon(
                       Icons.notifications,
                       color: Colors.white,
+                      semanticLabel: 'Text to announce in accessibility modes',
                     ))
               ],
               backgroundColor: Colors.transparent, elevation: 0,
             ),
             body: Column(
               children: [
-                Container(
+                SizedBox(
                   height: size.height * 0.4,
                   width: size.width,
                   child: Image.asset(
@@ -141,7 +147,7 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         height: size.height * 0.01,
                       ),
-                      Container(
+                      SizedBox(
                         height: size.height * 0.26,
                         child: ListView(
                           scrollDirection: Axis.horizontal,
@@ -158,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                                   Row(
                                     children: [
                                       SizedBox(
-                                        width: size.width * 0.05,
+                                        width: size.width * 0.01,
                                       ),
                                       GestureDetector(
                                         onTap: () {
@@ -168,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                                                   builder: (_) =>
                                                       const RechargePage()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.2,
                                           child: Column(
@@ -194,7 +200,7 @@ class _HomePageState extends State<HomePage> {
                                                   builder: (_) =>
                                                       const Test()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.2,
                                           child: Column(
@@ -219,9 +225,9 @@ class _HomePageState extends State<HomePage> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (_) =>
-                                                      const Test()));
+                                                      const Tagactivition()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.2,
                                           child: Column(
@@ -245,9 +251,9 @@ class _HomePageState extends State<HomePage> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (_) =>
-                                                      const Test()));
+                                                      const Contactus()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.2,
                                           child: Column(
@@ -273,7 +279,7 @@ class _HomePageState extends State<HomePage> {
                                                   builder: (_) =>
                                                       const Test()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.3,
                                           child: Column(
@@ -290,30 +296,20 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ],
                                   ),
-                                  //SizedBox(height: size.height*0.05,),
-                                  const Divider(
-                                    thickness: 2,
-                                    height: 2,
-                                    endIndent: 10,
-                                    color: Colors.red,
-                                  ),
                                   SizedBox(
-                                    height: size.height * 0.03,
+                                    height: size.height * 0.04,
                                   ),
                                   Row(
                                     children: [
-                                      SizedBox(
-                                        width: size.width * 0.05,
-                                      ),
                                       GestureDetector(
                                         onTap: () {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (_) =>
-                                                      const Test()));
+                                                      const FeedBack()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.2,
                                           child: Column(
@@ -329,7 +325,7 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                       SizedBox(
-                                        width: size.width * 0.15,
+                                        width: size.width * 0.10,
                                       ),
                                       GestureDetector(
                                         onTap: () {
@@ -339,7 +335,7 @@ class _HomePageState extends State<HomePage> {
                                                   builder: (_) =>
                                                       const Test()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.25,
                                           child: Column(
@@ -363,9 +359,9 @@ class _HomePageState extends State<HomePage> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (_) =>
-                                                      const Test()));
+                                                      const Location()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.2,
                                           child: Column(
@@ -391,7 +387,7 @@ class _HomePageState extends State<HomePage> {
                                                   builder: (_) =>
                                                       const Test()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.2,
                                           child: Column(
@@ -417,7 +413,7 @@ class _HomePageState extends State<HomePage> {
                                                   builder: (_) =>
                                                       const Test()));
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           height: size.height * 0.11,
                                           width: size.width * 0.2,
                                           child: Column(
@@ -449,26 +445,23 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         height: size.height * 0.03,
                       ),
-                      Container(
+                      SizedBox(
                         height: size.height * 0.11,
                         width: size.width,
                         child: CarouselSlider(
                           items: [
                             Center(
-                                child: Container(
-                              child: Column(
-                                children: const [
-                                  Text(
-                                    "Your gateway to Toll Pay\n just got simpler\n",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15),
-                                  ),
-                                  //SizedBox(height: size.height*0.01,),
-                                  Text(
-                                      "In line with RTA digital Transformation..")
-                                ],
-                              ),
+                                child: Column(
+                              children: const [
+                                Text(
+                                  "\nYour gateway to Toll Pay\n just got simpler\n",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15),
+                                ),
+                                //SizedBox(height: size.height*0.01,),
+                                Text("In line with ETC Toll Pay......")
+                              ],
                             )),
                             //Container(child: Text("HELLO"),),
                           ],

@@ -14,7 +14,6 @@ class ProfileRecharge extends StatefulWidget {
 }
 
 class _ProfileRechargeState extends State<ProfileRecharge> {
-
   File? pickedImage;
 
   void imagePickerOption() {
@@ -89,7 +88,7 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
     }
   }
 
-  void reset(){}
+  void reset() {}
 
   @override
   Widget build(BuildContext context) {
@@ -97,54 +96,56 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
               flexibleSpace: Center(
-                    child: Stack(
-                      children: [
-                        GestureDetector(
-                          onTap: imagePickerOption,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border:
-                              Border.all(color: Colors.indigo, width: 5),
-                              borderRadius: const BorderRadius.all(
-                                Radius.circular(100),
-                              ),
-                            ),
-                            child: ClipOval(
-                              child: pickedImage != null
-                                  ? Image.file(
-                                pickedImage!,
-                                width: 150,
-                                height: 150,
-                                fit: BoxFit.cover,
-                              )
-                                  : Image.asset("images/user.png",
-                                height: 150,width: 150,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                child: Stack(
+                  children: [
+                    GestureDetector(
+                      onTap: imagePickerOption,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: Colors.indigo, width: 5),
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(100),
                           ),
                         ),
-                        Positioned(
-                          bottom: 4,
-                          right: 0,
-                          child: IconButton(
-                            onPressed: imagePickerOption,
-                            icon: const Icon(
-                              Icons.add_a_photo_outlined,
-                              color: Colors.blue,
-                              size: 20,
-                            ),
-                          ),
+                        child: ClipOval(
+                          child: pickedImage != null
+                              ? Image.file(
+                                  pickedImage!,
+                                  width: 150,
+                                  height: 150,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.asset(
+                                  "images/user.png",
+                                  height: 150,
+                                  width: 150,
+                                  fit: BoxFit.cover,
+                                ),
                         ),
-                      ],
+                      ),
                     ),
-                  ),
-              title: Text("Add Recharge Profile"),
-              actions: [
+                    Positioned(
+                      bottom: 4,
+                      right: 0,
+                      child: IconButton(
+                        onPressed: imagePickerOption,
+                        icon: const Icon(
+                          Icons.add_a_photo_outlined,
+                          color: Colors.blue,
+                          size: 20,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              title: const Text("Add Recharge Profile"),
+              actions: const [
                 Padding(
                   padding: EdgeInsets.all(18.0),
                   child: Text("Reset"),
@@ -152,13 +153,15 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
               ],
               backgroundColor: Colors.deepPurple,
               collapsedHeight: 200,
-              bottom: TabBar(tabs: [
-                Text("PALATE/MOBILE"),
-                Text("ACCOUNT/PIN"),
-              ],
-
+              bottom: const TabBar(
+                indicatorColor: Colors.amber,
+                // labelColor: Colors.amber,
+                indicatorWeight: 2,
+                tabs: [
+                  Text("PALATE/MOBILE"),
+                  Text("ACCOUNT/PIN"),
+                ],
               ),
-
             ),
             SliverFillRemaining(
               child: TabBarView(

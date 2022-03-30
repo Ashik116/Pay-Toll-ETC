@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:toll_payetc/Ui/imagepicker.dart';
 
-
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
 
@@ -211,7 +210,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             Container(
                               decoration: BoxDecoration(
                                 border:
-                                Border.all(color: Colors.indigo, width: 5),
+                                    Border.all(color: Colors.indigo, width: 5),
                                 borderRadius: const BorderRadius.all(
                                   Radius.circular(100),
                                 ),
@@ -219,15 +218,17 @@ class _SignUpPageState extends State<SignUpPage> {
                               child: ClipOval(
                                 child: pickedImage != null
                                     ? Image.file(
-                                  pickedImage!,
-                                  width: 170,
-                                  height: 170,
-                                  fit: BoxFit.cover,
-                                )
-                                    : Image.asset("images/user.png",
-                                height: 170,width: 170,
-                                  fit: BoxFit.cover,
-                                ),
+                                        pickedImage!,
+                                        width: 170,
+                                        height: 170,
+                                        fit: BoxFit.cover,
+                                      )
+                                    : Image.asset(
+                                        "images/user.png",
+                                        height: 170,
+                                        width: 170,
+                                        fit: BoxFit.cover,
+                                      ),
                               ),
                             ),
                             Positioned(
@@ -261,14 +262,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       TextField(
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
-                          // prefix: const Icon(Icons.email),
+                            // prefix: const Icon(Icons.email),
                             icon: const Icon(
                               Icons.face,
                               color: Color(0xFF176EB0),
                             ),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.grey.shade100)),
+                                    BorderSide(color: Colors.grey.shade100)),
                             labelText: "Full Name",
                             enabledBorder: InputBorder.none,
                             labelStyle: const TextStyle(color: Colors.grey)),
@@ -276,14 +277,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       TextField(
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          // prefix: const Icon(Icons.email),
+                            // prefix: const Icon(Icons.email),
                             icon: const Icon(
                               Icons.phone_android,
                               color: Color(0xFF176EB0),
                             ),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.grey.shade100)),
+                                    BorderSide(color: Colors.grey.shade100)),
                             labelText: "Mobile Number",
                             enabledBorder: InputBorder.none,
                             labelStyle: const TextStyle(color: Colors.grey)),
@@ -291,14 +292,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       TextField(
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
-                          // prefix: const Icon(Icons.email),
+                            // prefix: const Icon(Icons.email),
                             icon: const Icon(
                               Icons.directions_car,
                               color: Color(0xFF176EB0),
                             ),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.grey.shade100)),
+                                    BorderSide(color: Colors.grey.shade100)),
                             labelText: "Vehicle Number",
                             hintText: "DHA-GA-11-1111",
                             enabledBorder: InputBorder.none,
@@ -306,14 +307,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       TextField(
                         decoration: InputDecoration(
-                          // prefix: const Icon(Icons.email),
+                            // prefix: const Icon(Icons.email),
                             icon: const Icon(
                               Icons.email,
                               color: Color(0xFF176EB0),
                             ),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.grey.shade100)),
+                                    BorderSide(color: Colors.grey.shade100)),
                             labelText: "Email",
                             hintText: "Optional",
                             enabledBorder: InputBorder.none,
@@ -321,14 +322,14 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       TextField(
                         decoration: InputDecoration(
-                          // prefix: const Icon(Icons.email),
+                            // prefix: const Icon(Icons.email),
                             icon: const Icon(
                               Icons.location_on,
                               color: Color(0xFF176EB0),
                             ),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.grey.shade100)),
+                                    BorderSide(color: Colors.grey.shade100)),
                             labelText: "Address",
                             enabledBorder: InputBorder.none,
                             labelStyle: const TextStyle(color: Colors.grey)),
@@ -338,7 +339,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         obscuringCharacter: "*",
                         decoration: InputDecoration(
                             icon: IconButton(
-                              icon:const  Icon(
+                              icon: const Icon(
                                 Icons.vpn_key,
                                 color: Color(0xFF176EB0),
                               ),
@@ -350,7 +351,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.grey.shade100)),
+                                    BorderSide(color: Colors.grey.shade100)),
                             labelText: "Password",
                             enabledBorder: InputBorder.none,
                             labelStyle: const TextStyle(color: Colors.grey)),
@@ -372,7 +373,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             ),
                             focusedBorder: UnderlineInputBorder(
                                 borderSide:
-                                BorderSide(color: Colors.grey.shade100)),
+                                    BorderSide(color: Colors.grey.shade100)),
                             labelText: "Confirm Password",
                             enabledBorder: InputBorder.none,
                             labelStyle: const TextStyle(color: Colors.grey)),

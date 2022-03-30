@@ -61,11 +61,12 @@ class _SlideDrawerState extends State<SlideDrawer> {
               title: const Text('Home'),
               onTap: () {
                 //Navigator.of(context).pushNamed("/profile/user");
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => const HomePage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const HomePage()));
               },
             ),
             ListTile(
+              //Regnumtoll app ar navigation_drawer a ase....
               leading: const Icon(Icons.logout_outlined),
               title: const Text('LogOut'),
               onTap: () {

@@ -1,8 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-
-
 
 class loadingAnimation extends StatefulWidget {
   const loadingAnimation({
@@ -14,8 +11,6 @@ class loadingAnimation extends StatefulWidget {
 }
 
 class _loadingAnimationState extends State<loadingAnimation> {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,9 +19,11 @@ class _loadingAnimationState extends State<loadingAnimation> {
           body: const Center(
             child: SpinKitCircle(
               duration: Duration(milliseconds: 1050),
-              color: Colors.white,),
+              color: Colors.white,
+            ),
           )),
-    );// Material(
+    );
+    // Material(
     //   color: Colors.white,
     //   child: Column(
     //     mainAxisAlignment: MainAxisAlignment.center,
