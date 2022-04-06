@@ -1,9 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.toll_payetc">
+
    <application
         android:label="Pay Toll"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyAL5KKPSElpLJq3uNeElHXOzwR1JMa991E"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

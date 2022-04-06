@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:toll_payetc/Animation/loading.dart';
 import 'package:toll_payetc/Model/drawer.dart';
 import 'package:toll_payetc/Ui/sign_in.dart';
+import 'package:toll_payetc/Units/About%20Us/about_us.dart';
 import 'package:toll_payetc/Units/Contact%20Us/contact_us.dart';
 import 'package:toll_payetc/Units/Feedback/feedback.dart';
 import 'package:toll_payetc/Units/Tag%20Activition/tag_activition.dart';
@@ -106,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (_) => LoginScreen()));
+                                        builder: (_) => const LoginScreen()));
                               },
                               child: const Center(
                                 child: Text(
@@ -119,14 +120,15 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              gradient: const LinearGradient(
-                                  colors: [
-                                    Color(0xFF176EB0),
-                                    Color(0xFFFF4891)
-                                  ],
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter)),
+                            borderRadius: BorderRadius.circular(20),
+                            gradient: const LinearGradient(
+                                colors: [
+                                  Color(0xFF176EB0),
+                                  Color(0xFFFF4891),
+                                ],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter),
+                          ),
                         ),
                       ),
                     );
@@ -358,8 +360,7 @@ class _HomePageState extends State<HomePage> {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (_) =>
-                                                      const Location()));
+                                                  builder: (_) => MapView()));
                                         },
                                         child: SizedBox(
                                           height: size.height * 0.11,
@@ -385,7 +386,7 @@ class _HomePageState extends State<HomePage> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (_) =>
-                                                      const Test()));
+                                                      const AboutUs()));
                                         },
                                         child: SizedBox(
                                           height: size.height * 0.11,
