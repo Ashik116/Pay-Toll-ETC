@@ -166,91 +166,96 @@ class _FeedBackState extends State<FeedBack> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: const Text("Feedback"),
-        backgroundColor: Colors.deepPurple,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: GestureDetector(
-              onTap: () {},
-              child: const Text("Reset"),
-            ),
-          )
-        ],
-      ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: size.height * 0.1,
-          ),
-          const TextField(
-            decoration: InputDecoration(labelText: "Select Enquiry"),
-          ),
-          const TextField(
-            decoration: InputDecoration(labelText: "Name"),
-          ),
-          const TextField(
-            decoration: InputDecoration(labelText: "Email"),
-          ),
-          TextFormField(
-            decoration: const InputDecoration(labelText: "Mobile"),
-          ),
-          TextFormField(
-            decoration: const InputDecoration(labelText: "Account Number"),
-          ),
-          TextField(
-            scrollPadding: const EdgeInsets.all(10),
-            maxLines: 8,
-            decoration: InputDecoration(
-              labelText: "Write Your Feedback",
-              suffixIcon: Icon(
-                Icons.task_alt_outlined,
-                color: Colors.lightGreen.shade500,
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          title: const Text("Feedback"),
+          backgroundColor: Colors.deepPurple,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: GestureDetector(
+                onTap: () {},
+                child: const Text("Reset"),
               ),
-              border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.black)),
+            )
+          ],
+        ),
+        body: Column(
+          children: [
+            SizedBox(
+              height: size.height * 0.1,
             ),
-          ),
-          SizedBox(
-            height: size.height * 0.02,
-          ),
-          Row(
-            children: [
-              GestureDetector(
-                onTap: imagePickerOption,
-                child: SizedBox(
-                  height: size.height * 0.1,
-                  width: size.width * 0.3,
-                  child: pickedImage != null
-                      ? Image.file(
-                          pickedImage!,
-                          height: size.height * 0.1,
-                          width: size.width * 0.1,
-                        )
-                      : Image.asset("images/icon/add_image.png"),
+            const TextField(
+              decoration: InputDecoration(labelText: "Select Enquiry"),
+            ),
+            const TextField(
+              decoration: InputDecoration(labelText: "Name"),
+            ),
+            const TextField(
+              decoration: InputDecoration(labelText: "Email"),
+            ),
+            TextFormField(
+              decoration: const InputDecoration(labelText: "Mobile"),
+            ),
+            TextFormField(
+              decoration: const InputDecoration(labelText: "Account Number"),
+            ),
+            SizedBox(
+              height: size.height * 0.01,
+            ),
+            TextField(
+              scrollPadding: const EdgeInsets.all(10),
+              maxLines: 8,
+              decoration: InputDecoration(
+                labelText: "Write Your Feedback",
+                suffixIcon: Icon(
+                  Icons.task_alt_outlined,
+                  color: Colors.lightGreen.shade500,
                 ),
+                border: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black)),
               ),
-            ],
-          ),
-          SizedBox(
-            height: size.height * 0.1,
-          ),
-          FlatButton(
-            padding: const EdgeInsets.all(10),
-            onPressed: () {},
-            child: const Text(
-              "CONFIRM",
-              style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            color: Colors.deepPurple,
-            splashColor: Colors.amber,
-            height: size.height * 0.05,
-            minWidth: size.width * 0.8,
-          ),
-        ],
+            SizedBox(
+              height: size.height * 0.02,
+            ),
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: imagePickerOption,
+                  child: SizedBox(
+                    height: size.height * 0.1,
+                    width: size.width * 0.3,
+                    child: pickedImage != null
+                        ? Image.file(
+                            pickedImage!,
+                            height: size.height * 0.1,
+                            width: size.width * 0.1,
+                          )
+                        : Image.asset("images/icon/add_image.png"),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: size.height * 0.05,
+            ),
+            FlatButton(
+              padding: const EdgeInsets.all(10),
+              onPressed: () {},
+              child: const Text(
+                "CONFIRM",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              color: Colors.deepPurple,
+              splashColor: Colors.amber,
+              height: size.height * 0.05,
+              minWidth: size.width * 0.8,
+            ),
+          ],
+        ),
       ),
     );
   }
