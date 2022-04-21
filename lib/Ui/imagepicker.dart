@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:toll_payetc/test.dart';
 
-
 class GetImage extends StatefulWidget {
   const GetImage({Key? key}) : super(key: key);
 
@@ -14,14 +13,12 @@ class GetImage extends StatefulWidget {
 }
 
 class _GetImageState extends State<GetImage> {
-
   File? pickedImage;
 
   double getSmallDiameter(BuildContext context) =>
-  MediaQuery.of(context).size.width * 2 / 3;
+      MediaQuery.of(context).size.width * 2 / 3;
   double getBiglDiameter(BuildContext context) =>
       MediaQuery.of(context).size.width * 7 / 8;
-
 
   void imagePickerOption() {
     Get.bottomSheet(
@@ -44,9 +41,11 @@ class _GetImageState extends State<GetImage> {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height*0.05,),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width*0.5,
+                    height: MediaQuery.of(context).size.height * 0.05,
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
                     height: 40,
                     child: Container(
                       child: Material(
@@ -55,33 +54,36 @@ class _GetImageState extends State<GetImage> {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(20),
                           splashColor: Colors.amber,
-                          onTap: (){
+                          onTap: () {
                             pickImage(ImageSource.camera);
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
-                              Icon(Icons.camera,color: Colors.white,),
-                              Text("Camera",style: TextStyle(
+                              Icon(
+                                Icons.camera,
                                 color: Colors.white,
-                              ),),
-
+                              ),
+                              Text(
+                                "Camera",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
                             ],
                           ),
                         ),
                       ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        gradient: const LinearGradient(
-                          colors: [
-                            Color(0xFF176EB0),
-                            Color(0xFFFF4891)
-                          ],
-                        )
-                      ),
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: const LinearGradient(
+                            colors: [Color(0xFF176EB0), Color(0xFFFF4891)],
+                          )),
                     ),
                   ),
-                  SizedBox(height: MediaQuery.of(context).size.height*0.03,),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
                   // ElevatedButton.icon(
                   //   onPressed: () {
                   //     pickImage(ImageSource.camera);
@@ -97,7 +99,7 @@ class _GetImageState extends State<GetImage> {
                   //   label: const Text("GALLERY"),
                   // ),
                   SizedBox(
-                    width: MediaQuery.of(context).size.width*0.5,
+                    width: MediaQuery.of(context).size.width * 0.5,
                     height: 40,
                     child: Container(
                       child: Material(
@@ -106,17 +108,22 @@ class _GetImageState extends State<GetImage> {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(20),
                           splashColor: Colors.amber,
-                          onTap: (){
+                          onTap: () {
                             pickImage(ImageSource.gallery);
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: const [
-                              Icon(Icons.image,color: Colors.white,),
-                              Text("Galary",style: TextStyle(
+                              Icon(
+                                Icons.image,
                                 color: Colors.white,
-                              ),),
-
+                              ),
+                              Text(
+                                "Galary",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -124,12 +131,8 @@ class _GetImageState extends State<GetImage> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           gradient: const LinearGradient(
-                            colors: [
-                              Color(0xFF176EB0),
-                              Color(0xFFFF4891)
-                            ],
-                          )
-                      ),
+                            colors: [Color(0xFF176EB0), Color(0xFFFF4891)],
+                          )),
                     ),
                   ),
                   const SizedBox(
@@ -151,7 +154,6 @@ class _GetImageState extends State<GetImage> {
     );
   }
 
-
   pickImage(ImageSource imageType) async {
     try {
       final photo = await ImagePicker().pickImage(source: imageType);
@@ -167,7 +169,6 @@ class _GetImageState extends State<GetImage> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -175,11 +176,11 @@ class _GetImageState extends State<GetImage> {
       backgroundColor: const Color(0xFFEEEEEE),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,elevation: 0,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
       body: Stack(
         children: <Widget>[
-
           Positioned(
             left: -getSmallDiameter(context) / 3,
             bottom: -getSmallDiameter(context) / 3,
@@ -213,7 +214,8 @@ class _GetImageState extends State<GetImage> {
             bottom: -getBiglDiameter(context) / 2,
             child: Container(
               child: const Center(
-                child: Text("",
+                child: Text(
+                  "",
                   style: TextStyle(
                       fontFamily: "Pacifico",
                       fontSize: 40,
@@ -258,7 +260,6 @@ class _GetImageState extends State<GetImage> {
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Color(0xFFF3E9EE)),
             ),
-
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -267,11 +268,11 @@ class _GetImageState extends State<GetImage> {
                 const Center(
                     child: Text(
                   "Scan Your Blue Book",
-                style: TextStyle(
-                  fontFamily: "Pacifico",
-                  color: Colors.white,
-                  fontSize: 20,
-                ),
+                  style: TextStyle(
+                    fontFamily: "Pacifico",
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
                 )),
                 Container(
                   decoration: BoxDecoration(
@@ -286,26 +287,26 @@ class _GetImageState extends State<GetImage> {
                       children: [
                         Container(
                           decoration: BoxDecoration(
-                            border:
-                            Border.all(color: Colors.indigo, width: 5),
+                            border: Border.all(color: Colors.indigo, width: 5),
                           ),
                           child: GestureDetector(
                             onTap: imagePickerOption,
                             child: Container(
-                              height: size.height*0.53,
-                              width: size.width*1,
+                              height: size.height * 0.53,
+                              width: size.width * 1,
                               child: pickedImage != null
                                   ? Image.file(
-                                pickedImage!,
-                                width: size.width,
-                                height: size.height*0.17,
-                                fit: BoxFit.cover,
-                              )
-                                  : Image.asset("images/user.png",
-                              height: size.height*0.17,
-                                width: size.width*1,
-                                fit: BoxFit.cover,
-                              ),
+                                      pickedImage!,
+                                      width: size.width,
+                                      height: size.height * 0.17,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.asset(
+                                      "images/user.png",
+                                      height: size.height * 0.17,
+                                      width: size.width * 1,
+                                      fit: BoxFit.cover,
+                                    ),
                             ),
                           ),
                         ),
@@ -325,7 +326,6 @@ class _GetImageState extends State<GetImage> {
                     ),
                   ),
                 ),
-
                 Container(
                   margin: const EdgeInsets.fromLTRB(20, 0, 20, 30),
                   child: Row(
@@ -342,9 +342,10 @@ class _GetImageState extends State<GetImage> {
                               borderRadius: BorderRadius.circular(20),
                               splashColor: Colors.amber,
                               onTap: () {
-                                Navigator.
-                                push(context,
-                                    MaterialPageRoute(builder: (_)=>const Test()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => const Test()));
                               },
                               child: const Center(
                                 child: Text(
@@ -378,4 +379,3 @@ class _GetImageState extends State<GetImage> {
     );
   }
 }
-

@@ -7,10 +7,10 @@ import 'package:toll_payetc/Ui/sign_in.dart';
 import 'package:toll_payetc/Units/About%20Us/about_us.dart';
 import 'package:toll_payetc/Units/Feedback/feedback.dart';
 import 'package:toll_payetc/Units/Tag%20Activition/tag_activition.dart';
-import 'package:toll_payetc/Units/location.dart';
 import 'package:toll_payetc/Units/recharge.dart';
 
 import '../Constants/constants.dart';
+import '../Units/Contact Us/contact_us.dart';
 import '../test.dart';
 
 class HomePage extends StatefulWidget {
@@ -151,7 +151,8 @@ class _HomePageState extends State<HomePage> {
                           height: size.height * 0.01,
                         ),
                         SizedBox(
-                          height: size.height * 0.26,
+                          height: size.height * 0.24,
+                          width: size.width,
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: [
@@ -254,7 +255,7 @@ class _HomePageState extends State<HomePage> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (_) =>
-                                                        const Tagactivition()));
+                                                        const Contactus()));
                                           },
                                           child: SizedBox(
                                             height: size.height * 0.11,
@@ -300,7 +301,7 @@ class _HomePageState extends State<HomePage> {
                                       ],
                                     ),
                                     SizedBox(
-                                      height: size.height * 0.04,
+                                      height: size.height * 0.02,
                                     ),
                                     Row(
                                       children: [
@@ -353,31 +354,28 @@ class _HomePageState extends State<HomePage> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: size.width * 0.09,
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (_) => MapView()));
-                                          },
-                                          child: SizedBox(
-                                            height: size.height * 0.11,
-                                            width: size.width * 0.2,
-                                            child: Column(
-                                              children: [
-                                                Image.asset(
-                                                    "images/icon/location.png"),
-                                                SizedBox(
-                                                  height: size.height * 0.01,
-                                                ),
-                                                const Text("Location"),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
+                                        // GestureDetector(
+                                        //   onTap: () {
+                                        //     Navigator.push(
+                                        //         context,
+                                        //         MaterialPageRoute(
+                                        //             builder: (_) => MapView()));
+                                        //   },
+                                        //   child: SizedBox(
+                                        //     height: size.height * 0.11,
+                                        //     width: size.width * 0.2,
+                                        //     child: Column(
+                                        //       children: [
+                                        //         Image.asset(
+                                        //             "images/icon/location.png"),
+                                        //         SizedBox(
+                                        //           height: size.height * 0.01,
+                                        //         ),
+                                        //         const Text("Location"),
+                                        //       ],
+                                        //     ),
+                                        //   ),
+                                        // ),
                                         SizedBox(
                                           width: size.width * 0.15,
                                         ),
@@ -444,12 +442,10 @@ class _HomePageState extends State<HomePage> {
                           endIndent: 10,
                           color: Colors.blueAccent.shade200,
                         ),
-                        SizedBox(
-                          height: size.height * 0.03,
-                        ),
-                        SizedBox(
-                          height: size.height * 0.11,
+                        Container(
+                          height: size.height * 0.1,
                           width: size.width,
+                          color: Colors.white10,
                           child: CarouselSlider(
                             items: [
                               Center(
@@ -465,12 +461,14 @@ class _HomePageState extends State<HomePage> {
                                   Text("In line with ETC Toll Pay......")
                                 ],
                               )),
-                              //Container(child: Text("HELLO"),),
                             ],
                             options: CarouselOptions(
                               autoPlay: true,
                             ),
                           ),
+                        ),
+                        const SizedBox(
+                          height: 0.5,
                         ),
                         DotsIndicator(dotsCount: 2),
                       ],
