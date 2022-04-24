@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:toll_payetc/Animation/loading.dart';
@@ -275,29 +274,6 @@ class _HomePageState extends State<HomePage> {
                                         SizedBox(
                                           width: size.width * 0.08,
                                         ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (_) =>
-                                                        const Test()));
-                                          },
-                                          child: SizedBox(
-                                            height: size.height * 0.11,
-                                            width: size.width * 0.3,
-                                            child: Column(
-                                              children: [
-                                                Image.asset(
-                                                    "images/icon/help.png"),
-                                                SizedBox(
-                                                  height: size.height * 0.01,
-                                                ),
-                                                const Text("Help & Support"),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
                                       ],
                                     ),
                                     SizedBox(
@@ -341,19 +317,42 @@ class _HomePageState extends State<HomePage> {
                                           },
                                           child: SizedBox(
                                             height: size.height * 0.11,
-                                            width: size.width * 0.25,
+                                            width: size.width * 0.3,
                                             child: Column(
                                               children: [
                                                 Image.asset(
-                                                    "images/icon/happy.png"),
+                                                    "images/icon/help.png"),
                                                 SizedBox(
                                                   height: size.height * 0.01,
                                                 ),
-                                                const Text("Happiness Meter"),
+                                                const Text("Help & Support"),
                                               ],
                                             ),
                                           ),
                                         ),
+                                        // GestureDetector(
+                                        //   onTap: () {
+                                        //     Navigator.push(
+                                        //         context,
+                                        //         MaterialPageRoute(
+                                        //             builder: (_) =>
+                                        //                 const Test()));
+                                        //   },
+                                        //   child: SizedBox(
+                                        //     height: size.height * 0.11,
+                                        //     width: size.width * 0.25,
+                                        //     child: Column(
+                                        //       children: [
+                                        //         Image.asset(
+                                        //             "images/icon/happy.png"),
+                                        //         SizedBox(
+                                        //           height: size.height * 0.01,
+                                        //         ),
+                                        //         const Text("Happiness Meter"),
+                                        //       ],
+                                        //     ),
+                                        //   ),
+                                        // ),
                                         // GestureDetector(
                                         //   onTap: () {
                                         //     Navigator.push(
@@ -442,31 +441,31 @@ class _HomePageState extends State<HomePage> {
                           endIndent: 10,
                           color: Colors.blueAccent.shade200,
                         ),
-                        Container(
-                          height: size.height * 0.1,
-                          width: size.width,
-                          color: Colors.white10,
-                          child: CarouselSlider(
-                            items: [
-                              Center(
-                                  child: Column(
-                                children: const [
-                                  Text(
-                                    "\nYour gateway to Toll Pay\n just got simpler\n",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15),
-                                  ),
-                                  //SizedBox(height: size.height*0.01,),
-                                  Text("In line with ETC Toll Pay......")
-                                ],
-                              )),
-                            ],
-                            options: CarouselOptions(
-                              autoPlay: true,
-                            ),
-                          ),
-                        ),
+                        // Container(
+                        //   height: size.height * 0.1,
+                        //   width: size.width,
+                        //   color: Colors.white10,
+                        //   child: CarouselSlider(
+                        //     items: [
+                        //       Center(
+                        //           child: Column(
+                        //         children: const [
+                        //           Text(
+                        //             "\nYour gateway to Toll Pay\n just got simpler\n",
+                        //             style: TextStyle(
+                        //                 fontWeight: FontWeight.bold,
+                        //                 fontSize: 15),
+                        //           ),
+                        //           //SizedBox(height: size.height*0.01,),
+                        //           Text("In line with ETC Toll Pay......")
+                        //         ],
+                        //       )),
+                        //     ],
+                        //     options: CarouselOptions(
+                        //       autoPlay: true,
+                        //     ),
+                        //   ),
+                        // ),
                         const SizedBox(
                           height: 0.5,
                         ),

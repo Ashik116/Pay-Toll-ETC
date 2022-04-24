@@ -1,9 +1,12 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:toll_payetc/Ui/imagepicker.dart';
+import 'package:toll_payetc/Ui/sign_in.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -17,6 +20,61 @@ class _SignUpPageState extends State<SignUpPage> {
       MediaQuery.of(context).size.width * 2 / 3;
   double getBiglDiameter(BuildContext context) =>
       MediaQuery.of(context).size.width * 7 / 8;
+
+  TextEditingController name = TextEditingController();
+  TextEditingController mobilenumber = TextEditingController();
+  TextEditingController vehiclenumber = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController password = TextEditingController();
+  TextEditingController pass2 = TextEditingController();
+
+  Future registration(BuildContext context) async {
+    if (name.text == "" ||
+        mobilenumber.text == "" ||
+        vehiclenumber.text == "" ||
+        email.text == "" ||
+        address.text == "" ||
+        password.text == "" ||
+        pass2.text == "") {
+      Fluttertoast.showToast(
+        msg: "All fields cannot be blank",
+        toastLength: Toast.LENGTH_SHORT,
+      );
+    } else {
+      if (password.text == pass2.text) {
+        Fluttertoast.showToast(
+            msg: "Done",
+            toastLength: Toast.LENGTH_SHORT,
+            fontSize: 20,
+            gravity: ToastGravity.CENTER);
+        var url = "http://103.145.118.20/api/tollpay/registrationt_postapi.php";
+        var response = await http.post(Uri.parse(url), body: {
+          "email": email.text,
+          "Vehicle_number": vehiclenumber.text,
+          "FName": name.text,
+          "Phone": mobilenumber.text,
+          "Address": address.text,
+          "Password": password.text
+        });
+
+        var data = json.decode(response.body);
+        if (data == "success") {
+          Fluttertoast.showToast(
+            msg: "Registration success",
+            toastLength: Toast.LENGTH_SHORT,
+          );
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => LoginScreen()));
+        }
+      } else {
+        Fluttertoast.showToast(
+          msg: "All fields cannot be blank",
+          toastLength: Toast.LENGTH_SHORT,
+        );
+      }
+    }
+  }
 
   bool _obscureText = true;
 
@@ -260,6 +318,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   child: Column(
                     children: <Widget>[
                       TextField(
+                        controller: name,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                             // prefix: const Icon(Icons.email),
@@ -275,6 +334,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             labelStyle: const TextStyle(color: Colors.grey)),
                       ),
                       TextField(
+                        controller: mobilenumber,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                             // prefix: const Icon(Icons.email),
@@ -290,6 +350,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             labelStyle: const TextStyle(color: Colors.grey)),
                       ),
                       TextField(
+                        controller: vehiclenumber,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
                             // prefix: const Icon(Icons.email),
@@ -306,6 +367,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             labelStyle: const TextStyle(color: Colors.grey)),
                       ),
                       TextField(
+                        controller: email,
                         decoration: InputDecoration(
                             // prefix: const Icon(Icons.email),
                             icon: const Icon(
@@ -321,6 +383,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             labelStyle: const TextStyle(color: Colors.grey)),
                       ),
                       TextField(
+                        controller: address,
                         decoration: InputDecoration(
                             // prefix: const Icon(Icons.email),
                             icon: const Icon(
@@ -335,6 +398,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             labelStyle: const TextStyle(color: Colors.grey)),
                       ),
                       TextField(
+                        controller: password,
                         obscureText: _obscureText,
                         obscuringCharacter: "*",
                         decoration: InputDecoration(
@@ -357,6 +421,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             labelStyle: const TextStyle(color: Colors.grey)),
                       ),
                       TextField(
+                        controller: pass2,
                         obscureText: _obscureText,
                         obscuringCharacter: "*",
                         decoration: InputDecoration(
@@ -409,10 +474,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               borderRadius: BorderRadius.circular(20),
                               splashColor: Colors.amber,
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => const GetImage()));
+                                registration(context);
                               },
                               child: const Center(
                                 child: Text(

@@ -116,14 +116,14 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
                           child: pickedImage != null
                               ? Image.file(
                                   pickedImage!,
-                                  width: 150,
-                                  height: 150,
+                                  width: 120,
+                                  height: 120,
                                   fit: BoxFit.cover,
                                 )
                               : Image.asset(
                                   "images/user.png",
-                                  height: 150,
-                                  width: 150,
+                                  height: 120,
+                                  width: 120,
                                   fit: BoxFit.cover,
                                 ),
                         ),
@@ -163,7 +163,7 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
                 ],
               ),
             ),
-            SliverFillRemaining(
+            const SliverFillRemaining(
               child: TabBarView(
                 children: [
                   Palate(),

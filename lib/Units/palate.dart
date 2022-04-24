@@ -46,7 +46,10 @@ class _PalateState extends State<Palate> {
             ],
           ),
           const TextField(
-            decoration: InputDecoration(labelText: "Mobile Number"),
+            keyboardType: TextInputType.numberWithOptions(),
+            decoration: InputDecoration(
+              labelText: "Mobile Number",
+            ),
           ),
           SizedBox(
             height: size.height * 0.1,
