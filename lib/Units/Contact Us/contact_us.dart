@@ -19,7 +19,7 @@ class _ContactusState extends State<Contactus> {
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: Color(0xFF0C8ECA),
             elevation: 0,
             centerTitle: true,
             title: const Text("Contact Us"),
@@ -202,7 +202,10 @@ class _ContactusState extends State<Contactus> {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       gradient: const LinearGradient(
-                          colors: [Color(0xFF176EB0), Color(0xFFFF4891)],
+                          colors: [
+                            Color(0xFFFF4891),
+                            Color(0xFF0C8ECA),
+                          ],
                           begin: Alignment.topCenter,
                           end: Alignment.bottomCenter)),
                 ),

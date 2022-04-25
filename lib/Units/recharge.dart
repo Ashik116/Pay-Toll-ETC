@@ -16,25 +16,27 @@ class _RechargePageState extends State<RechargePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Get.back();
           },
           icon: Icon(Icons.arrow_back),
         ),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Color(0xFF0C8ECA),
         title: Text('Reacharge'),
         actions: [
-          IconButton(onPressed: (){}, icon:Icon(Icons.search), ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (_)=>ProfileRecharge()));
+          Navigator.push(
+              context, MaterialPageRoute(builder: (_) => ProfileRecharge()));
         },
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Color(0xFF0C8ECA),
         child: Icon(Icons.add),
-
-
       ),
     );
   }

@@ -42,7 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
         toastLength: Toast.LENGTH_SHORT,
       );
     } else {
-      if (password.text == pass2.text) {
+      if (name.text.isNotEmpty) {
         Fluttertoast.showToast(
             msg: "Done",
             toastLength: Toast.LENGTH_SHORT,
@@ -59,19 +59,12 @@ class _SignUpPageState extends State<SignUpPage> {
         });
 
         var data = json.decode(response.body);
-        if (data == "success") {
-          Fluttertoast.showToast(
-            msg: "Registration success",
-            toastLength: Toast.LENGTH_SHORT,
-          );
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => LoginScreen()));
-        }
-      } else {
         Fluttertoast.showToast(
-          msg: "All fields cannot be blank",
+          msg: "Registration success",
           toastLength: Toast.LENGTH_SHORT,
         );
+        Navigator.push(
+            context, MaterialPageRoute(builder: (_) => LoginScreen()));
       }
     }
   }

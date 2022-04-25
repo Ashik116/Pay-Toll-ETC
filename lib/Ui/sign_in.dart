@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
 import 'package:toll_payetc/Animation/loading.dart';
+import 'package:toll_payetc/Ui/dashboard.dart';
 import 'package:toll_payetc/Ui/sign_up.dart';
 import 'package:toll_payetc/test.dart';
 
@@ -18,6 +23,36 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _obscureText = true;
   bool isLoading = true;
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
+  Future login() async {
+    if (user.text.isNotEmpty && pass.text.isNotEmpty) {
+      Fluttertoast.showToast(msg: "Done", gravity: ToastGravity.CENTER_RIGHT);
+      var response = await http.post(
+          Uri.parse("http://103.145.118.20/api/tollpay/login.php"),
+          body: {"email": user.text, "Password": pass.text});
+      var msg = json.decode(response.body);
+      var result = jsonDecode(response.body);
+      print(result);
+
+      Navigator.push(context,
+          MaterialPageRoute(builder: (_) => DashBoard(response: result)));
+      Fluttertoast.showToast(
+        msg: "Successful",
+        gravity: ToastGravity.CENTER_LEFT,
+        toastLength: Toast.LENGTH_SHORT,
+        fontSize: 20,
+      );
+    } else {
+      Fluttertoast.showToast(
+        msg: "Something is wrong",
+        gravity: ToastGravity.CENTER_LEFT,
+        toastLength: Toast.LENGTH_SHORT,
+        fontSize: 20,
+      );
+    }
+  }
 
   //RefreshController _refreshController = RefreshController(initialRefresh: false);
 
@@ -135,6 +170,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Column(
                           children: <Widget>[
                             TextField(
+                              controller: user,
                               decoration: InputDecoration(
                                   // prefix: const Icon(Icons.email),
                                   icon: const Icon(
@@ -150,6 +186,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       const TextStyle(color: Colors.grey)),
                             ),
                             TextField(
+                              controller: pass,
                               obscureText: _obscureText,
                               obscuringCharacter: "*",
                               decoration: InputDecoration(
@@ -208,10 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     borderRadius: BorderRadius.circular(20),
                                     splashColor: Colors.amber,
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (_) => const Test()));
+                                      login();
                                     },
                                     child: const Center(
                                       child: Text(

@@ -17,7 +17,7 @@ class _TagactivitionState extends State<Tagactivition> {
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            backgroundColor: Colors.deepPurple,
+            backgroundColor: Color(0xFF0C8ECA),
             title: const Text("Tag Activation"),
           ),
           body: Column(
@@ -36,7 +36,7 @@ class _TagactivitionState extends State<Tagactivition> {
                       "Basic Information",
                       style: TextStyle(
                         fontSize: 26,
-                        color: Colors.deepPurple,
+                        color: Colors.black,
                       ),
                     ),
                   ],
@@ -96,8 +96,8 @@ class _TagactivitionState extends State<Tagactivition> {
                   "CONFIRM",
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
-                color: Colors.deepPurple,
-                splashColor: Colors.amber,
+                color: Color(0xFF0C8ECA),
+                splashColor: Colors.white,
                 height: size.height * 0.05,
                 minWidth: size.width * 0.8,
               ),

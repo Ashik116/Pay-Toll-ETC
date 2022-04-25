@@ -151,7 +151,7 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
                   child: Text("Reset"),
                 )
               ],
-              backgroundColor: Colors.deepPurple,
+              backgroundColor: Color(0xFF0C8ECA),
               collapsedHeight: 200,
               bottom: const TabBar(
                 indicatorColor: Colors.amber,

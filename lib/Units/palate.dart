@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../test.dart';
+
 class Palate extends StatefulWidget {
   const Palate({Key? key}) : super(key: key);
 
@@ -54,17 +56,36 @@ class _PalateState extends State<Palate> {
           SizedBox(
             height: size.height * 0.1,
           ),
-          FlatButton(
-            padding: EdgeInsets.all(10),
-            onPressed: () {},
-            child: const Text(
-              "Add Recharge Profile",
-              style: TextStyle(color: Colors.white, fontSize: 16),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            height: 40,
+            child: Container(
+              child: Material(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.transparent,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(20),
+                  splashColor: Colors.amber,
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const Test()));
+                  },
+                  child: const Center(
+                    child: Text(
+                      "SUBMIT",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                ),
+              ),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(colors: [
+                    Color(0xFFFF4891),
+                    Color(0xFF0C8ECA),
+                  ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
             ),
-            color: Colors.deepPurple,
-            splashColor: Colors.amber,
-            height: size.height * 0.05,
-            minWidth: size.width * 0.8,
           ),
         ],
       ),
