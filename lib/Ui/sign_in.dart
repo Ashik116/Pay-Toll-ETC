@@ -32,12 +32,14 @@ class _LoginScreenState extends State<LoginScreen> {
       var response = await http.post(
           Uri.parse("http://103.145.118.20/api/tollpay/login.php"),
           body: {"email": user.text, "Password": pass.text});
-      var msg = json.decode(response.body);
+      var msg = response.body;
       var result = jsonDecode(response.body);
       print(result);
 
-      Navigator.push(context,
-          MaterialPageRoute(builder: (_) => DashBoard(response: result)));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => DashBoard(response: jsonDecode(response.body))));
       Fluttertoast.showToast(
         msg: "Successful",
         gravity: ToastGravity.CENTER_LEFT,

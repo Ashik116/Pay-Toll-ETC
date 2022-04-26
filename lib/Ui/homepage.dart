@@ -1,6 +1,3 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:toll_payetc/Animation/loading.dart';
 import 'package:toll_payetc/Model/drawer.dart';
@@ -443,35 +440,35 @@ class _HomePageState extends State<HomePage> {
                           endIndent: 10,
                           color: Colors.blueAccent.shade200,
                         ),
-                        Container(
-                          height: size.height * 0.1,
-                          width: size.width,
-                          color: Colors.white10,
-                          child: CarouselSlider(
-                            items: [
-                              Center(
-                                  child: Column(
-                                children: const [
-                                  Text(
-                                    "\nYour gateway to Toll Pay\n just got simpler\n",
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15),
-                                  ),
-                                  //SizedBox(height: size.height*0.01,),
-                                  Text("In line with ETC Toll Pay......")
-                                ],
-                              )),
-                            ],
-                            options: CarouselOptions(
-                              autoPlay: true,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 0.5,
-                        ),
-                        DotsIndicator(dotsCount: 2),
+                        // Container(
+                        //   height: size.height * 0.1,
+                        //   width: size.width,
+                        //   color: Colors.white10,
+                        //   child: CarouselSlider(
+                        //     items: [
+                        //       Center(
+                        //           child: Column(
+                        //         children: const [
+                        //           Text(
+                        //             "\nYour gateway to Toll Pay\n just got simpler\n",
+                        //             style: TextStyle(
+                        //                 fontWeight: FontWeight.bold,
+                        //                 fontSize: 15),
+                        //           ),
+                        //           //SizedBox(height: size.height*0.01,),
+                        //           Text("In line with ETC Toll Pay......")
+                        //         ],
+                        //       )),
+                        //     ],
+                        //     options: CarouselOptions(
+                        //       autoPlay: true,
+                        //     ),
+                        //   ),
+                        // ),
+                        // const SizedBox(
+                        //   height: 0.5,
+                        // ),
+                        // DotsIndicator(dotsCount: 2),
                       ],
                     ),
                   ),
