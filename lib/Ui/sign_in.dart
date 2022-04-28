@@ -34,12 +34,9 @@ class _LoginScreenState extends State<LoginScreen> {
           body: {"email": user.text, "Password": pass.text});
       var msg = response.body;
       var result = jsonDecode(response.body);
-      print(result);
 
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (_) => DashBoard(response: jsonDecode(response.body))));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (_) => DashBoard(response: result)));
       Fluttertoast.showToast(
         msg: "Successful",
         gravity: ToastGravity.CENTER_LEFT,

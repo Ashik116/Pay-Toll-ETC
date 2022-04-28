@@ -1,174 +1,120 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:toll_payetc/Units/account_number.dart';
-import 'package:toll_payetc/Units/palate.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
+import 'package:toll_payetc/Ui/dashboard2.dart';
 
 class ProfileRecharge extends StatefulWidget {
-  const ProfileRecharge({Key? key}) : super(key: key);
+  // const ProfileRecharge({Key? key}) : super(key: key);
+  String vechielvalue;
+
+  ProfileRecharge({required this.vechielvalue});
 
   @override
   State<ProfileRecharge> createState() => _ProfileRechargeState();
 }
 
 class _ProfileRechargeState extends State<ProfileRecharge> {
-  File? pickedImage;
+  TextEditingController amount = TextEditingController();
+  late String printvalu = widget.vechielvalue;
 
-  void imagePickerOption() {
-    Get.bottomSheet(
-      SingleChildScrollView(
-        child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(10.0),
-            topRight: Radius.circular(10.0),
-          ),
-          child: Container(
-            color: Colors.white,
-            height: 250,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  const Text(
-                    "Pic Image From",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      pickImage(ImageSource.camera);
-                    },
-                    icon: const Icon(Icons.camera),
-                    label: const Text("CAMERA"),
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      pickImage(ImageSource.gallery);
-                    },
-                    icon: const Icon(Icons.image),
-                    label: const Text("GALLERY"),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: const Icon(Icons.close),
-                    label: const Text("CANCEL"),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
+  Future addblance() async {
+    if (amount.text.isNotEmpty) {
+      var recharge = await http.post(
+          Uri.parse("http://103.145.118.20/api/tollpay/recharge.php"),
+          body: {
+            "Vehicle_number": printvalu,
+            "Balance": amount.text,
+          });
 
-  pickImage(ImageSource imageType) async {
-    try {
-      final photo = await ImagePicker().pickImage(source: imageType);
-      if (photo == null) return;
-      final tempImage = File(photo.path);
-      setState(() {
-        pickedImage = tempImage;
-      });
-
-      Get.back();
-    } catch (error) {
-      debugPrint(error.toString());
+      Navigator.push(context, MaterialPageRoute(builder: (_) => GHOKKA()));
+      Fluttertoast.showToast(
+        msg: "Successful",
+        gravity: ToastGravity.CENTER_LEFT,
+        toastLength: Toast.LENGTH_SHORT,
+        fontSize: 20,
+      );
+    } else {
+      Fluttertoast.showToast(
+        msg: "Not Successful",
+        gravity: ToastGravity.CENTER_LEFT,
+        toastLength: Toast.LENGTH_SHORT,
+        fontSize: 20,
+      );
     }
   }
-
-  void reset() {}
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              flexibleSpace: Center(
-                child: Stack(
-                  children: [
-                    GestureDetector(
-                      onTap: imagePickerOption,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.indigo, width: 5),
-                          borderRadius: const BorderRadius.all(
-                            Radius.circular(100),
-                          ),
-                        ),
-                        child: ClipOval(
-                          child: pickedImage != null
-                              ? Image.file(
-                                  pickedImage!,
-                                  width: 120,
-                                  height: 120,
-                                  fit: BoxFit.cover,
-                                )
-                              : Image.asset(
-                                  "images/user.png",
-                                  height: 120,
-                                  width: 120,
-                                  fit: BoxFit.cover,
-                                ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 4,
-                      right: 0,
-                      child: IconButton(
-                        onPressed: imagePickerOption,
-                        icon: const Icon(
-                          Icons.add_a_photo_outlined,
-                          color: Colors.blue,
-                          size: 20,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              title: const Text("Add Recharge Profile"),
-              actions: const [
-                Padding(
-                  padding: EdgeInsets.all(18.0),
-                  child: Text("Reset"),
-                )
-              ],
-              backgroundColor: Color(0xFF0C8ECA),
-              collapsedHeight: 200,
-              bottom: const TabBar(
-                indicatorColor: Colors.amber,
-                // labelColor: Colors.amber,
-                indicatorWeight: 2,
-                tabs: [
-                  Text("PALATE/MOBILE"),
-                  Text("ACCOUNT/PIN"),
-                ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("ADD MONEY"),
+      ),
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("${printvalu}"),
+            Text(
+              "Profile Recharge",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 30,
               ),
             ),
-            const SliverFillRemaining(
-              child: TabBarView(
-                children: [
-                  Palate(),
-                  Account(),
-                ],
+            SizedBox(
+              height: size.height * 0.1,
+            ),
+            TextField(
+              controller: amount,
+              decoration: InputDecoration(
+                  icon: IconButton(
+                    icon: const Icon(
+                      Icons.monetization_on_rounded,
+                      color: Color(0xFF176EB0),
+                    ),
+                    onPressed: () {},
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black)),
+                  labelText: "Amount",
+                  enabledBorder: InputBorder.none,
+                  labelStyle: const TextStyle(color: Colors.grey)),
+            ),
+            SizedBox(
+              height: size.height * 0.1,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+              height: 40,
+              child: Container(
+                child: Material(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(20),
+                    splashColor: Colors.amber,
+                    onTap: () {
+                      addblance();
+                    },
+                    child: const Center(
+                      child: Text(
+                        "CONFIRM",
+                        style: TextStyle(
+                            color: Colors.white, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ),
+                ),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: const LinearGradient(
+                        colors: [
+                          Color(0xFFFF4891),
+                          Color(0xFF0C8ECA),
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter)),
               ),
             ),
           ],
