@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
-import 'package:toll_payetc/Ui/dashboard2.dart';
+import 'package:toll_payetc/Ui/dashboard.dart';
 
 class ProfileRecharge extends StatefulWidget {
   // const ProfileRecharge({Key? key}) : super(key: key);
@@ -26,7 +26,12 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
             "Balance": amount.text,
           });
 
-      Navigator.push(context, MaterialPageRoute(builder: (_) => GHOKKA()));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => DashBoard(
+                    response: printvalu,
+                  )));
       Fluttertoast.showToast(
         msg: "Successful",
         gravity: ToastGravity.CENTER_LEFT,
@@ -47,78 +52,132 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text("ADD MONEY"),
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("${printvalu}"),
-            Text(
-              "Profile Recharge",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          //
+
+          Text(
+            "Profile Recharge",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
             ),
-            SizedBox(
-              height: size.height * 0.1,
-            ),
-            TextField(
-              controller: amount,
-              decoration: InputDecoration(
-                  icon: IconButton(
-                    icon: const Icon(
-                      Icons.monetization_on_rounded,
-                      color: Color(0xFF176EB0),
-                    ),
-                    onPressed: () {},
+          ),
+          Text("${printvalu}"),
+          SizedBox(
+            height: size.height * 0.1,
+          ),
+          Row(
+            children: [
+              Card(
+                child: Container(
+                  height: size.height * 0.07,
+                  width: size.width * 0.20,
+                  padding: EdgeInsets.all(10),
+                  child: Image.asset(
+                    "images/visa.png",
+                    height: double.infinity,
+                    width: double.infinity,
+                    fit: BoxFit.fill,
                   ),
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black)),
-                  labelText: "Amount",
-                  enabledBorder: InputBorder.none,
-                  labelStyle: const TextStyle(color: Colors.grey)),
-            ),
-            SizedBox(
-              height: size.height * 0.1,
-            ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              height: 40,
-              child: Container(
-                child: Material(
+                ),
+              ),
+              Card(
+                child: Container(
+                  height: size.height * 0.07,
+                  width: size.width * 0.20,
+                  padding: EdgeInsets.all(10),
+                  child: Image.asset(
+                    "images/master.png",
+                    height: double.infinity,
+                    width: double.infinity,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Card(
+                child: Container(
+                  height: size.height * 0.07,
+                  width: size.width * 0.20,
+                  padding: EdgeInsets.all(10),
+                  child: Image.asset(
+                    "images/Bkash.png",
+                    height: double.infinity,
+                    width: double.infinity,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+              Card(
+                child: Container(
+                  height: size.height * 0.07,
+                  width: size.width * 0.20,
+                  padding: EdgeInsets.all(10),
+                  child: Image.asset(
+                    "images/nagad.png",
+                    height: double.infinity,
+                    width: double.infinity,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: size.height * 0.1,
+          ),
+          TextField(
+            controller: amount,
+            decoration: InputDecoration(
+                icon: IconButton(
+                  icon: Image.asset("images/bdt.png"),
+                  onPressed: () {},
+                ),
+                focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black)),
+                labelText: "Amount",
+                enabledBorder: InputBorder.none,
+                labelStyle: const TextStyle(color: Colors.grey)),
+          ),
+          SizedBox(
+            height: size.height * 0.1,
+          ),
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.5,
+            height: 40,
+            child: Container(
+              child: Material(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.transparent,
+                child: InkWell(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.transparent,
-                  child: InkWell(
-                    borderRadius: BorderRadius.circular(20),
-                    splashColor: Colors.amber,
-                    onTap: () {
-                      addblance();
-                    },
-                    child: const Center(
-                      child: Text(
-                        "CONFIRM",
-                        style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.w700),
-                      ),
+                  splashColor: Colors.amber,
+                  onTap: () {
+                    addblance();
+                  },
+                  child: const Center(
+                    child: Text(
+                      "Pay Now",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.w700),
                     ),
                   ),
                 ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    gradient: const LinearGradient(
-                        colors: [
-                          Color(0xFFFF4891),
-                          Color(0xFF0C8ECA),
-                        ],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter)),
               ),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(colors: [
+                    Color(0xFFFF4891),
+                    Color(0xFF0C8ECA),
+                  ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

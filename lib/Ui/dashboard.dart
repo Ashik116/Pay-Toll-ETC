@@ -42,6 +42,7 @@ class _DashBoardState extends State<DashBoard> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       floatingActionButton: GestureDetector(
         child: Column(
@@ -66,135 +67,124 @@ class _DashBoardState extends State<DashBoard> {
                   builder: (_) => ProfileRecharge(vechielvalue: keyresponse)));
         },
       ),
-      drawer: SlideDrawer(),
+      drawer: const SlideDrawer(),
       appBar: AppBar(
-        title: Text("Toll Pay"),
+        title: const Text("Toll Pay"),
         centerTitle: true,
       ),
       body: Column(
         children: [
           Container(
-            height: 120,
-            color: Colors.green,
-            child: Expanded(
-              child: Container(
-                  height: 100,
-                  color: Colors.green,
-                  child: FutureBuilder(
-                    future: getData(),
-                    builder: (_, AsyncSnapshot response) {
-                      if (response.connectionState == ConnectionState.waiting) {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      }
-                      if (response.hasData) {
-                        VechleResponse vechleResponse =
-                            response.data as VechleResponse;
-                        return Scaffold(
-                          body: Column(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.all(7),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Container(
-                                          height: 20,
-                                          child: Align(
-                                              alignment: Alignment.topLeft,
-                                              child: Text(
-                                                "Name:- ${vechleResponse.data?[0].fName}",
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 15,
-                                                    color: Colors.black),
-                                              )),
-                                        ),
-                                        Expanded(
-                                          child: Container(
-                                            child: Align(
-                                                alignment: Alignment.topRight,
-                                                child: Text(
-                                                  "Balance:- ${vechleResponse.data?[0].balance},BDT",
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 15,
-                                                      color: Colors.black),
-                                                )),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      height: 30,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Container(
-                                          height: 20,
-                                          child: Align(
-                                            alignment: Alignment.topLeft,
-                                            child: Text(
-                                              "Veh-No:- ${vechleResponse.data?[0].vehicleNumber}",
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 15,
-                                                  color: Colors.black),
-                                            ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Container(
-                                            child: Align(
-                                              alignment: Alignment.topCenter,
-                                              child: Text(
-                                                "Phone:- ${vechleResponse.data?[0].phone}",
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 15,
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+              height: size.height * 0.150,
+              child: FutureBuilder(
+                future: getData(),
+                builder: (_, AsyncSnapshot response) {
+                  if (response.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  if (response.hasData) {
+                    VechleResponse vechleResponse =
+                        response.data as VechleResponse;
+                    return Scaffold(
+                      body: Container(
+                        margin: const EdgeInsets.all(7),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  height: size.height * 0.03,
+                                  child: Align(
+                                      alignment: Alignment.topLeft,
+                                      child: Text(
+                                        "Name:- ${vechleResponse.data?[0].fName}",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                            color: Colors.black),
+                                      )),
                                 ),
-                                height: 100,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(
-                                      color: Colors.white,
-                                      width: 2.0,
+                                Expanded(
+                                  child: Container(
+                                    child: Align(
+                                        alignment: Alignment.topRight,
+                                        child: Text(
+                                          "Balance:- ${vechleResponse.data?[0].balance},BDT",
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                              color: Colors.black),
+                                        )),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: size.height * 0.04,
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  child: Align(
+                                    alignment: Alignment.topLeft,
+                                    child: Text(
+                                      "Veh-No:- ${vechleResponse.data?[0].vehicleNumber}",
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 15,
+                                          color: Colors.black),
                                     ),
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    gradient: const LinearGradient(
-                                        colors: [Colors.white, Colors.white]),
-                                    boxShadow: const [
-                                      BoxShadow(
-                                          color: Colors.black,
-                                          blurRadius: 2.0,
-                                          offset: Offset(2.0, 2.0))
-                                    ]),
-                              ),
-                            ],
-                          ),
-                        );
-                      } else {
-                        return Text("No data Found");
-                      }
-                    },
-                  )),
-            ),
-          ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Align(
+                                      alignment: Alignment.topCenter,
+                                      child: Text(
+                                        "Phone:- ${vechleResponse.data?[0].phone}",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                            color: Colors.black),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        height: size.height * 0.122,
+                        width: size.width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                            gradient: const LinearGradient(
+                                colors: [Colors.white, Colors.white]),
+                            boxShadow: const [
+                              BoxShadow(
+                                  color: Colors.black,
+                                  blurRadius: 2.0,
+                                  offset: Offset(2.0, 2.0))
+                            ]),
+                      ),
+                    );
+                  } else {
+                    return const Text("No data Found");
+                  }
+                },
+              )),
           Container(
-            height: 30,
+            height: size.height * 0.04,
+            width: size.width,
             color: Colors.blue.shade400,
-            child: Align(
+            child: const Align(
                 alignment: Alignment.center,
                 child: Text(
                   "Previous Transaction",
@@ -202,14 +192,14 @@ class _DashBoardState extends State<DashBoard> {
                 )),
           ),
           SizedBox(
-            height: 2,
+            height: size.height * 0.003,
           ),
           Container(
             child: Row(
               children: [
                 Container(
-                    width: 92,
-                    child: Align(
+                    width: size.width * 0.250,
+                    child: const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Amount",
@@ -218,8 +208,8 @@ class _DashBoardState extends State<DashBoard> {
                       ),
                     )),
                 Container(
-                    width: 100,
-                    child: Align(
+                    width: size.width * 0.250,
+                    child: const Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
                         "Narration",
@@ -228,20 +218,20 @@ class _DashBoardState extends State<DashBoard> {
                       ),
                     )),
                 Container(
-                    width: 100,
-                    child: Align(
+                    width: size.width * 0.250,
+                    child: const Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
+                      child: const Text(
                         "Type",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     )),
                 Container(
-                    width: 90,
-                    child: Align(
+                    width: size.width * 0.200,
+                    child: const Align(
                       alignment: Alignment.centerLeft,
-                      child: Text(
+                      child: const Text(
                         "Date",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15),
@@ -249,7 +239,8 @@ class _DashBoardState extends State<DashBoard> {
                     )),
               ],
             ),
-            height: 40.0,
+            height: size.height * 0.05,
+            width: size.width,
             decoration: BoxDecoration(
                 color: Colors.blue.shade400,
                 border: Border.all(
@@ -260,7 +251,7 @@ class _DashBoardState extends State<DashBoard> {
                 gradient: LinearGradient(
                     colors: [Colors.blue.shade400, Colors.blue.shade400]),
                 boxShadow: [
-                  BoxShadow(
+                  const BoxShadow(
                       color: Colors.grey,
                       blurRadius: 2.0,
                       offset: Offset(2.0, 2.0))
@@ -283,16 +274,17 @@ class _DashBoardState extends State<DashBoard> {
                           return Card(
                             shadowColor: Colors.black,
                             child: Container(
-                              height: 40,
+                              height: size.height * 0.05,
+                              width: size.width,
                               child: Row(
                                 children: [
                                   Container(
-                                    width: 80,
+                                    width: size.width * 0.180,
                                     child: Align(
                                       alignment: Alignment.center,
                                       child: Text(
                                         "${astatement.data?[index].amount}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 13,
                                         ),
@@ -300,12 +292,12 @@ class _DashBoardState extends State<DashBoard> {
                                     ),
                                   ),
                                   Container(
-                                    width: 90,
+                                    width: size.width * 0.270,
                                     child: Align(
                                       alignment: Alignment.center,
                                       child: Text(
                                         "${astatement.data?[index].narration}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 13,
                                         ),
@@ -313,23 +305,26 @@ class _DashBoardState extends State<DashBoard> {
                                     ),
                                   ),
                                   Container(
-                                    width: 100,
+                                    width: size.width * 0.190,
                                     child: Align(
                                       alignment: Alignment.center,
                                       child: Text(
                                         "${astatement.data?[index].type}",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 13,
                                         ),
                                       ),
                                     ),
                                   ),
-                                  Text(
-                                    "${astatement.data?[index].tdate}",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 13,
+                                  Container(
+                                    width: size.width * 0.300,
+                                    child: Text(
+                                      "${astatement.data?[index].tdate}",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -340,7 +335,7 @@ class _DashBoardState extends State<DashBoard> {
                       ),
                     );
                   }
-                  return Text("No Data found");
+                  return const Text("No Data found");
                 }),
           ),
         ],
