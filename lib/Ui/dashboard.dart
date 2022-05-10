@@ -74,7 +74,7 @@ class _DashBoardState extends State<DashBoard> {
       ),
       body: Column(
         children: [
-          Container(
+          SizedBox(
               height: size.height * 0.150,
               child: FutureBuilder(
                 future: getData(),
@@ -94,7 +94,7 @@ class _DashBoardState extends State<DashBoard> {
                           children: [
                             Row(
                               children: [
-                                Container(
+                                SizedBox(
                                   height: size.height * 0.03,
                                   child: Align(
                                       alignment: Alignment.topLeft,
@@ -107,17 +107,15 @@ class _DashBoardState extends State<DashBoard> {
                                       )),
                                 ),
                                 Expanded(
-                                  child: Container(
-                                    child: Align(
-                                        alignment: Alignment.topRight,
-                                        child: Text(
-                                          "Balance:- ${vechleResponse.data?[0].balance},BDT",
-                                          style: const TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 15,
-                                              color: Colors.black),
-                                        )),
-                                  ),
+                                  child: Align(
+                                      alignment: Alignment.topRight,
+                                      child: Text(
+                                        "Balance:- ${vechleResponse.data?[0].balance},BDT",
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 15,
+                                            color: Colors.black),
+                                      )),
                                 ),
                               ],
                             ),
@@ -126,29 +124,25 @@ class _DashBoardState extends State<DashBoard> {
                             ),
                             Row(
                               children: [
-                                Container(
+                                Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    "Veh-No:- ${vechleResponse.data?[0].vehicleNumber}",
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15,
+                                        color: Colors.black),
+                                  ),
+                                ),
+                                Expanded(
                                   child: Align(
-                                    alignment: Alignment.topLeft,
+                                    alignment: Alignment.topCenter,
                                     child: Text(
-                                      "Veh-No:- ${vechleResponse.data?[0].vehicleNumber}",
+                                      "Phone:- ${vechleResponse.data?[0].phone}",
                                       style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15,
                                           color: Colors.black),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    child: Align(
-                                      alignment: Alignment.topCenter,
-                                      child: Text(
-                                        "Phone:- ${vechleResponse.data?[0].phone}",
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15,
-                                            color: Colors.black),
-                                      ),
                                     ),
                                   ),
                                 ),
@@ -197,7 +191,7 @@ class _DashBoardState extends State<DashBoard> {
           Container(
             child: Row(
               children: [
-                Container(
+                SizedBox(
                     width: size.width * 0.250,
                     child: const Align(
                       alignment: Alignment.centerLeft,
@@ -207,7 +201,7 @@ class _DashBoardState extends State<DashBoard> {
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     )),
-                Container(
+                SizedBox(
                     width: size.width * 0.250,
                     child: const Align(
                       alignment: Alignment.centerLeft,
@@ -217,17 +211,17 @@ class _DashBoardState extends State<DashBoard> {
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     )),
-                Container(
+                SizedBox(
                     width: size.width * 0.250,
                     child: const Align(
                       alignment: Alignment.centerLeft,
-                      child: const Text(
+                      child: Text(
                         "Type",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 15),
                       ),
                     )),
-                Container(
+                SizedBox(
                     width: size.width * 0.200,
                     child: const Align(
                       alignment: Alignment.centerLeft,
@@ -250,8 +244,8 @@ class _DashBoardState extends State<DashBoard> {
                 borderRadius: BorderRadius.circular(10.0),
                 gradient: LinearGradient(
                     colors: [Colors.blue.shade400, Colors.blue.shade400]),
-                boxShadow: [
-                  const BoxShadow(
+                boxShadow: const [
+                  BoxShadow(
                       color: Colors.grey,
                       blurRadius: 2.0,
                       offset: Offset(2.0, 2.0))
@@ -273,12 +267,12 @@ class _DashBoardState extends State<DashBoard> {
                         itemBuilder: (context, index) {
                           return Card(
                             shadowColor: Colors.black,
-                            child: Container(
+                            child: SizedBox(
                               height: size.height * 0.05,
                               width: size.width,
                               child: Row(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: size.width * 0.180,
                                     child: Align(
                                       alignment: Alignment.center,
@@ -291,7 +285,7 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width: size.width * 0.270,
                                     child: Align(
                                       alignment: Alignment.center,
@@ -304,7 +298,7 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width: size.width * 0.190,
                                     child: Align(
                                       alignment: Alignment.center,
@@ -317,7 +311,7 @@ class _DashBoardState extends State<DashBoard> {
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     width: size.width * 0.300,
                                     child: Text(
                                       "${astatement.data?[index].tdate}",

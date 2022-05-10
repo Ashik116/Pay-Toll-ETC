@@ -10,7 +10,7 @@ class GHOKKA extends StatefulWidget {
 class _GHOKKAState extends State<GHOKKA> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Text("Succesful"),
       ),

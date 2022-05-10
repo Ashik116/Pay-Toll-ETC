@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
       var response = await http.post(
           Uri.parse("http://103.145.118.20/api/tollpay/login.php"),
           body: {"email": user.text, "Password": pass.text});
-      var msg = response.body;
+
       var result = jsonDecode(response.body);
 
       Navigator.push(context,

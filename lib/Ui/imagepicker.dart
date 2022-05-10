@@ -291,7 +291,7 @@ class _GetImageState extends State<GetImage> {
                           ),
                           child: GestureDetector(
                             onTap: imagePickerOption,
-                            child: Container(
+                            child: SizedBox(
                               height: size.height * 0.53,
                               width: size.width * 1,
                               child: pickedImage != null
