@@ -59,8 +59,6 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          //
-
           const Text(
             "Profile Recharge",
             style: TextStyle(
@@ -78,7 +76,7 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
                 child: Container(
                   height: size.height * 0.07,
                   width: size.width * 0.20,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Image.asset(
                     "images/visa.png",
                     height: double.infinity,
@@ -91,7 +89,7 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
                 child: Container(
                   height: size.height * 0.07,
                   width: size.width * 0.20,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Image.asset(
                     "images/master.png",
                     height: double.infinity,
@@ -104,7 +102,7 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
                 child: Container(
                   height: size.height * 0.07,
                   width: size.width * 0.20,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Image.asset(
                     "images/Bkash.png",
                     height: double.infinity,
@@ -117,7 +115,7 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
                 child: Container(
                   height: size.height * 0.07,
                   width: size.width * 0.20,
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Image.asset(
                     "images/nagad.png",
                     height: double.infinity,
@@ -138,7 +136,7 @@ class _ProfileRechargeState extends State<ProfileRecharge> {
                   icon: Image.asset("images/bdt.png"),
                   onPressed: () {},
                 ),
-                focusedBorder: UnderlineInputBorder(
+                focusedBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: Colors.black)),
                 labelText: "Amount",
                 enabledBorder: InputBorder.none,

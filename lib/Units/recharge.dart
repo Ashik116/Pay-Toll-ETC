@@ -55,7 +55,7 @@ class _RechargePageState extends State<RechargePage> {
                 style: TextStyle(fontSize: 20, color: Colors.white),
               ),
               SizedBox(
-                height: size.height * 0.5,
+                height: size.height * 0.3,
               ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.3,

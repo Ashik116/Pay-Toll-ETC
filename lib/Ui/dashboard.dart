@@ -44,29 +44,6 @@ class _DashBoardState extends State<DashBoard> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      floatingActionButton: GestureDetector(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: const [
-            Icon(
-              Icons.add,
-              color: Colors.blueAccent,
-            ),
-            Text(
-              "Recharge Now",
-              style: TextStyle(
-                color: Colors.blueAccent,
-              ),
-            )
-          ],
-        ),
-        onTap: () {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => ProfileRecharge(vechielvalue: keyresponse)));
-        },
-      ),
       drawer: const SlideDrawer(),
       appBar: AppBar(
         title: const Text("Toll Pay"),
@@ -120,18 +97,22 @@ class _DashBoardState extends State<DashBoard> {
                               ],
                             ),
                             SizedBox(
-                              height: size.height * 0.04,
+                              height: size.height * 0.03,
                             ),
                             Row(
                               children: [
                                 Align(
-                                  alignment: Alignment.topLeft,
-                                  child: Text(
-                                    "Veh-No:- ${vechleResponse.data?[0].vehicleNumber}",
-                                    style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 15,
-                                        color: Colors.black),
+                                  alignment: Alignment.centerRight,
+                                  child: Container(
+                                    height: size.height * 0.04,
+                                    width: size.width * 1 / 2,
+                                    child: Text(
+                                      "Veh-No:- ${vechleResponse.data?[0].vehicleNumber}",
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 11,
+                                          color: Colors.black),
+                                    ),
                                   ),
                                 ),
                                 Expanded(
@@ -228,7 +209,7 @@ class _DashBoardState extends State<DashBoard> {
                       child: const Text(
                         "Date",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 15),
+                            fontWeight: FontWeight.bold, fontSize: 13),
                       ),
                     )),
               ],
@@ -262,6 +243,31 @@ class _DashBoardState extends State<DashBoard> {
                   } else if (response.hasData) {
                     Astatement astatement = response.data as Astatement;
                     return Scaffold(
+                      floatingActionButton: FloatingActionButton(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ),
+                            Text(
+                              "Recharge Now",
+                              style: TextStyle(
+                                fontSize: 5,
+                                color: Colors.white,
+                              ),
+                            )
+                          ],
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => ProfileRecharge(
+                                      vechielvalue: keyresponse)));
+                        },
+                      ),
                       body: ListView.builder(
                         itemCount: response.data!.data.length,
                         itemBuilder: (context, index) {
